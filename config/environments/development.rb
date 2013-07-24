@@ -39,4 +39,8 @@ StampApp::Application.configure do
   # Send email in development mode.
   config.action_mailer.perform_deliveries = true
 
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  Paperclip.options[:command_path] = "/usr/bin/"
 end

@@ -12,7 +12,14 @@ gem 'bootstrap-sass'
 gem 'figaro'
 gem 'gibbon'
 gem 'high_voltage'
+gem "paperclip", "~> 3.0"
 gem 'simple_form', '>= 3.0.0.rc'
+gem 'aws-sdk'
+gem 'devise'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem "nifty-generators", :group => :development
+gem 'acts-as-taggable-on'
+gem 'rails3-jquery-autocomplete', git: 'https://github.com/francisd/rails3-jquery-autocomplete'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
