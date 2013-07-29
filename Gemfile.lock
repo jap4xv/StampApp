@@ -1,4 +1,16 @@
 GIT
+  remote: git://github.com/heroku/rails3_serve_static_assets.git
+  revision: 84910ceb4ca2851d650e66d3b22f5008acf253f8
+  specs:
+    rails3_serve_static_assets (0.0.1)
+
+GIT
+  remote: git://github.com/heroku/rails_log_stdout.git
+  revision: 01b5bcc572e3baed1618f4068920dd83bd491fb2
+  specs:
+    rails_log_stdout (0.0.1)
+
+GIT
   remote: https://github.com/francisd/rails3-jquery-autocomplete
   revision: 9884a40f2bb1a8fa3ffab445e6d2c74c3ee99a0d
   specs:
@@ -209,6 +221,8 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.0.0)
   rails3-jquery-autocomplete!
+  rails3_serve_static_assets!
+  rails_log_stdout!
   rails_on_heroku
   sass-rails (~> 4.0.0)
   simple_form (>= 3.0.0.rc)

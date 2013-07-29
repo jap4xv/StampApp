@@ -11,22 +11,13 @@
     <%= f.text_field :tag_list %>
   </div>
 
-	<p>Images<br>
+	<p>Image 1 (Main display picture)<br>
 		<%=f.file_field :image %>
 	</p>
 
-  <p>Test Images<br>
-    <%=f.file_field :assets %>
+  <p>Image 2<br>
+    <%=f.file_field :image2 %>
   </p>
-
-  <p>Test2 <br>
-
-    <%= f.fields_for :assets do |asset_fields| %>
-      <%= asset_fields.file_field :asset %>
-    <% end %>
-
-  </p>
-
 
   <div>
     <%= f.input :notes %>

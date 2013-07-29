@@ -2,15 +2,8 @@
 
 
 <%= image_tag @stamp.image.url %>
-
- IN PROGRESS
-<% # @stamp.assets.image.url %>
-
-<% for asset in @stamp.assets %>
-  <p><%= image_tag(asset.picture.url) %></p>
-<% end %>
-
-
+<br>
+<%= image_tag @stamp.image2.url if @stamp.image2.url !=  "/images/original/missing.png"  %>
 
 <p>
   <strong>Title:</strong>
