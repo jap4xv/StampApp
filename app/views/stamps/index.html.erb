@@ -1,0 +1,51 @@
+<h4>View by Category</h4>
+<div id="tag_cloud">
+  <% tag_cloud Stamp.tag_counts, %w[s m l] do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+</div>
+<br>
+<h1>Stamps for Sale</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Picture</th>
+      <th>Price</th>
+      <th>Categories</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stamps.each do |stamp| %>
+      <tr>
+        <td><strong><%= link_to stamp.Title, stamp %></strong></td>
+        <td><%= image_tag stamp.image.url :thumb %></td>
+        <td><%= number_to_currency(stamp.Price) %></td>
+        <td><%= raw stamp.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') %></td>
+        <td><%= link_to 'Show', stamp %></td>
+        <td><%= link_to 'Edit', edit_stamp_path(stamp) if admin_signed_in?  %></td>
+        <td><%= link_to 'Destroy', stamp, method: :delete, data: { confirm: 'Are you sure?' } if admin_signed_in?   %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Stamp', new_stamp_path if admin_signed_in? %>
+
+<br><br>
+
+<h4>View by Category</h4>
+<div id="tag_cloud">
+  <% tag_cloud Stamp.tag_counts, %w[s m l] do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+</div>
+
+
+

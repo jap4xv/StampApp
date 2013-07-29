@@ -1,0 +1,10 @@
+<h1>Editing stamp</h1>
+
+<%= render 'form' %>
+
+<%= form_for @stamp, :url => stamps_path, :html => { :multipart => true } do |form| %>
+  <%= form.file_field :avatar %>
+<% end %>
+
+<%= link_to 'Show', @stamp %> |
+<%= link_to 'Back', stamps_path %>

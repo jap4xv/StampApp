@@ -1,0 +1,15 @@
+<%= simple_form_for(@stamp, :html => {:multipart => true}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :Title %>
+    <%= f.input :Description %>
+    <%= f.input :Price %>
+  </div>
+	<p>
+		<%=f.file_field :photo %>
+	</p>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

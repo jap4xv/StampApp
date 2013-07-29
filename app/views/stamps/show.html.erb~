@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @stamp.Title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @stamp.Description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @stamp.Price %>
+</p>
+
+<%= image_tag @stamp.image.url %>
+
+<%= link_to 'Edit', edit_stamp_path(@stamp) %> |
+<%= link_to 'Back', stamps_path %>

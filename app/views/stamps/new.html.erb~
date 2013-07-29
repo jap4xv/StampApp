@@ -1,0 +1,9 @@
+<h1>New stamp</h1>
+
+<%= render 'form' %>
+
+<%= form_for @stamp, :url => stamps_path, :html => { :multipart => true } do |form| %>
+  <%= form.file_field :image %>
+<% end %>
+
+<%= link_to 'Back', stamps_path %>

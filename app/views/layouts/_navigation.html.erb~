@@ -1,0 +1,14 @@
+<ul class="nav">
+  <li><%= link_to 'Home', root_path %></li>
+  <li><%= link_to 'About', page_path('about') %></li>
+  <li><%= link_to 'Contact', new_contact_path %></li>
+  
+  <% unless admin_signed_in? -%>
+    <li><%= link_to 'Sign in as Admin', new_admin_session_path %></li>
+  <% end -%>
+
+  <% if admin_signed_in? -%>
+    <li>Signed in as <%= current_admin.email %></li>
+  <% end -%>
+
+</ul>

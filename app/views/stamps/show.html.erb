@@ -1,0 +1,82 @@
+<p id="notice"><%= notice %></p>
+
+
+<%= image_tag @stamp.image.url %>
+
+ IN PROGRESS
+<% # @stamp.assets.image.url %>
+
+<% for asset in @stamp.assets %>
+  <p><%= image_tag(asset.picture.url) %></p>
+<% end %>
+
+
+
+<p>
+  <strong>Title:</strong>
+  <%= @stamp.Title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @stamp.Description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  $<%= @stamp.Price %>
+</p>
+
+<p>
+  <strong>Categories</strong>
+  <%= raw @stamp.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') %>
+</p>
+
+<p>
+  <% if admin_signed_in? %>
+    <strong>Notes:</strong>
+    <%= @stamp.notes if admin_signed_in? %>
+  <% end %>
+</p>
+<!-- Delete this if I decide to use paypal
+
+<% unless admin_signed_in?%>
+<form action="/charge" method="post">
+<script
+  src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+  data-key="pk_test_czwzkTp2tactuLOEOqbMTRzG"
+  data-amount="2000"
+  data-name="Demo Site"
+  data-description="$<%= @stamp.Price %>"
+  data-currency="usd"
+  data-image="<%= image_tag @stamp.image.url(:thumb) %>"
+</script>
+</form>
+<% end %>
+-->
+
+<br>
+
+<!-- delete the 'sandbox' from this url in production-->
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+
+<!-- Identify your business so that you can collect the payments. -->
+<input type="hidden" name="business" value="sellerfrank2@stamps.com">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="item_name" value="<%= @stamp.Title %>">
+<input type="hidden" name="amount" value="<%= @stamp.Price %>">
+<input type="hidden" name="item_number" value="<%= @stamp.id %>">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="shopping_url" value="http://www.banknotestamps.com/">
+<input type="hidden" name="notify_url" value="http://www.banknotestamps.com/">
+<input type="image" name="submit" border="0"
+src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+alt="PayPal - The safer, easier way to pay online">
+<img alt="" border="0" width="1" height="1"
+src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+</form>
+
+<br>
+
+<%= link_to 'Edit', edit_stamp_path(@stamp) if admin_signed_in? %> 
+<%= link_to 'Back', stamps_path %>
