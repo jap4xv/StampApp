@@ -15,12 +15,24 @@
 		<%=f.file_field :image %>
 	</p>
 
-  <p>Image 2<br>
+  <p>Additional Images<br>
     <%=f.file_field :image2 %>
+    <%=f.file_field :image3 %>
+    <%=f.file_field :image4 %>
   </p>
 
   <div>
     <%= f.input :notes %>
+  </div>
+
+<!-- CATEGORIES CHECKBOXES
+  <% for category in Category.find(:all) %>
+<div>
+  <%= check_box_tag "category", category.id %>
+  <%= category.name %>
+</div>
+<% end %>
+-->
 
   <div class="form-actions">
     <%= f.button :submit %>

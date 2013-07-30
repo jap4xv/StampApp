@@ -4,6 +4,9 @@
 <%= image_tag @stamp.image.url %>
 <br>
 <%= image_tag @stamp.image2.url if @stamp.image2.url !=  "/images/original/missing.png"  %>
+<%= image_tag @stamp.image3.url if @stamp.image3.url !=  "/images/original/missing.png"  %>
+<%= image_tag @stamp.image4.url if @stamp.image4.url !=  "/images/original/missing.png"  %>
+
 
 <p>
   <strong>Title:</strong>
@@ -17,13 +20,15 @@
 
 <p>
   <strong>Price:</strong>
-  $<%= @stamp.Price %>
+  <%= number_to_currency(@stamp.Price) %>
 </p>
 
 <p>
   <strong>Categories</strong>
   <%= raw @stamp.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') %>
 </p>
+
+
 
 <p>
   <% if admin_signed_in? %>

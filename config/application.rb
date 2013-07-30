@@ -6,9 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
-config.serve_static_assets = true
 
-config.assets.initialize_on_precompile = false
 module StampApp
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

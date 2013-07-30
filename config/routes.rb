@@ -1,4 +1,6 @@
 StampApp::Application.routes.draw do
+  resources :categories
+
   resources :payment_notifications
   	get 'tags/:tag', to: 'stamps#index', as: :tag
   devise_for :admins
