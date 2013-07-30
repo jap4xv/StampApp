@@ -3,7 +3,7 @@ class AddAttachmentImageToStamps < ActiveRecord::Migration
     change_table :stamps do |t|
       t.attachment :image
     end
-	add_attachment :stamps, :image
+#	add_attachment :stamps, :image
   end
 
   def self.down
