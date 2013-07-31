@@ -1,8 +1,8 @@
 class Stamp < ActiveRecord::Base	
 	acts_as_taggable
-	acts_as_taggable_on :categories
+	#acts_as_taggable_on :categories
 	has_many :assets
-	has_and_belongs_to_many :categories
+	#has_and_belongs_to_many :categories
 	accepts_nested_attributes_for :assets, :allow_destroy => true
 	
 

@@ -22,11 +22,11 @@
   <tbody>
     <% @stamps.each do |stamp| %>
       <tr>
-        <td><strong><%= link_to stamp.Title, stamp %></strong></td>
+        <td><h4><%= link_to stamp.Title, stamp %></h4></td>
         <td><%= image_tag stamp.image.url :thumb %></td>
         <td><%= number_to_currency(stamp.Price) %></td>
         <td><%= raw stamp.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') %></td>
-        <td><%= link_to 'Show', stamp %></td>
+        <td><%= link_to 'Show', stamp if admin_signed_in? %></td>
         <td><%= link_to 'Edit', edit_stamp_path(stamp) if admin_signed_in?  %></td>
         <td><%= link_to 'Destroy', stamp, method: :delete, data: { confirm: 'Are you sure?' } if admin_signed_in?   %></td>
       </tr>
