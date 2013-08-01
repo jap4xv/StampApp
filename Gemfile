@@ -16,6 +16,8 @@ gem "paperclip", "~> 3.0"
 gem 'simple_form', '>= 3.0.0.rc'
 gem 'aws-sdk'
 gem 'devise'
+gem 'unicorn'
+gem 'unicorn-rails'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem "nifty-generators", :group => :development
 gem 'acts-as-taggable-on'
