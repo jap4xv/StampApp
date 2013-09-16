@@ -1,6 +1,6 @@
 class StampsController < ApplicationController
   before_action :set_stamp, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_admin!, only: [:edit, :update, :destroy, :new, :create]
+  before_filter :authenticate_admin!, only: [:edit, :update, :destroy, :new, :create, :duplicate]
   # autocomplete :tag, :name
 
   # GET /stamps

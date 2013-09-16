@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+   font-family: arial, sans-serif;
+}
+
 #tag_cloud {
 	width: 400px;
 	line-height: 1.6em;
@@ -24,4 +28,9 @@ td {
 
 thead {
 	border-bottom: 2px solid;
+}
+
+p {
+  font-size: 1.5em;
+  padding: 5px; 
 }

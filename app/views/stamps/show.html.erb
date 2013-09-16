@@ -1,17 +1,21 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Edit', edit_stamp_path(@stamp) if admin_signed_in? %> 
+<%= link_to 'Back', stamps_path if admin_signed_in? %>
+<%= link_to 'New Stamp', new_stamp_path if admin_signed_in? %>
+<%= link_to 'Duplicate Stamp', new_stamp_path if admin_signed_in? %>
 
+<p>
+  <h2><u><%= @stamp.Title %></u></h2>
+</p>
+
+<br/>
 <%= image_tag @stamp.image.url %>
 <%= image_tag @stamp.image2.url if @stamp.image2.url !=  "/images/original/missing.png"  %>
 <%= image_tag @stamp.image3.url if @stamp.image3.url !=  "/images/original/missing.png"  %>
 <%= image_tag @stamp.image4.url if @stamp.image4.url !=  "/images/original/missing.png"  %>
 <%= image_tag @stamp.image5.url if @stamp.image4.url !=  "/images/original/missing.png"  %>
-
-
-<p>
-  <strong>Title:</strong>
-  <%= @stamp.Title %>
-</p>
+<br/><br/>
 
 <p>
   <strong>Description:</strong>
@@ -24,11 +28,14 @@
 </p>
 
 <p>
+  <strong>Terms of Sale:</strong>
+  The terms of sale go here.
+</p>
+
+<p>
   <strong>Categories</strong>
   <%= raw @stamp.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') %>
 </p>
-
-
 
 <p>
   <% if admin_signed_in? %>
@@ -36,22 +43,6 @@
     <%= @stamp.notes if admin_signed_in? %>
   <% end %>
 </p>
-<!-- Delete this if I decide to use paypal
-
-<% unless admin_signed_in?%>
-<form action="/charge" method="post">
-<script
-  src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-  data-key="pk_test_czwzkTp2tactuLOEOqbMTRzG"
-  data-amount="2000"
-  data-name="Demo Site"
-  data-description="$<%= @stamp.Price %>"
-  data-currency="usd"
-  data-image="<%= image_tag @stamp.image.url(:thumb) %>"
-</script>
-</form>
-<% end %>
--->
 
 <br>
 
@@ -76,5 +67,6 @@ src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
 
 <br>
 
-<%= link_to 'Edit', edit_stamp_path(@stamp) if admin_signed_in? %> 
-<%= link_to 'Back', stamps_path %>
+<%= link_to 'Edit', edit_stamp_path(@stamp) if admin_signed_in? %> |
+<%= link_to 'Back', stamps_path %> |
+<%= link_to 'New Stamp', new_stamp_path if admin_signed_in? %>

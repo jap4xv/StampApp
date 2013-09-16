@@ -8,17 +8,19 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body style="background-color: #dddddd;" >
     <header class="navbar navbar-fixed-top">
       <nav class="navbar-inner">
         <div class="container">
           <%= render 'layouts/navigation' %>
-	 
         </div>
       </nav>
     </header>
     <main role="main">
       <div class="container">
+      	<div id="banner" >
+				<img id="logo-img-id" width="180px" src="https://sites.google.com/site/banknotestamps/_/rsrc/1370536884723/config/customLogo.gif?revision=18" alt="Logo" class="sites-logo ">
+     	</div>
         <div class="content">
            <div class="row">
             <div class="span12">
