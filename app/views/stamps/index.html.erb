@@ -21,7 +21,7 @@
   </thead>
 
   <tbody>
-    <% @stamps.each do |stamp| %>
+    <% @stamps.reverse_each do |stamp| %>
       <tr>
         <td><strong><h4><%= link_to stamp.Title, stamp %></h4></strong></td>
         <td><%= image_tag stamp.image.url :thumb %></td>
