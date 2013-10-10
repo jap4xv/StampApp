@@ -2,10 +2,19 @@ class Stamp < ActiveRecord::Base
 	acts_as_taggable
 	#acts_as_taggable_on :categories
 	has_many :assets
-	#has_and_belongs_to_many :categories
+	has_many :categorizations
+  has_many :categories, through: :categorizations
 	accepts_nested_attributes_for :assets, :allow_destroy => true
 	
-
+  searchable do
+    text :Title, :Description
+    text :tag_list
+    
+    #string  :sort_title do
+    #  title.downcase.gsub(/^(an?|the)/, '')
+    #end
+  end
+  
 	has_attached_file :image, :styles => {  :large => "600x600>", :medium => "300x300>", :thumb => "128x128>" }, :default_url => "/images/:style/missing.png"
 	has_attached_file :image2, :styles => { :large => "600x600>", :medium => "300x300>", :thumb => "128x128>" }, :default_url => "/images/:style/missing.png"
 	has_attached_file :image3, :styles => { :large => "600x600>", :medium => "300x300>", :thumb => "128x128>" }, :default_url => "/images/:style/missing.png"

@@ -6,6 +6,9 @@
     <%= f.input :Description %>
     <%= f.input :Price %>
   </div>
+  
+  <%= f.association :categories,  as: :check_boxes %>	
+	
   <div class="field">
     <%= f.label :tag_list, "Tags (separated by commas)" %>
     <%= f.text_field :tag_list %>

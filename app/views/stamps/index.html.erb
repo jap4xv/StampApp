@@ -7,7 +7,16 @@
     <%= link_to tag.name, tag_path(tag.name), class: css_class %>
   <% end %>
 </div>
+
+<%= form_tag stamps_path, :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :title => nil %>
+  </p>
+<% end %>
+
 <hr>
+<%= form_tag edit_multiple_stamps_path do %>
 <table>
   <thead>
     <tr>
@@ -23,6 +32,7 @@
   <tbody>
     <% @stamps.reverse_each do |stamp| %>
       <tr>
+      	<td><%= check_box_tag "stamp_ids[]", stamp.id if admin_signed_in? %></td>
         <td><strong><h4><%= link_to stamp.Title, stamp %></h4></strong></td>
         <td><%= image_tag stamp.image.url :thumb %></td>
         <td><h4><%= number_to_currency(stamp.Price) %></h4></td>
@@ -34,7 +44,8 @@
     <% end %>
   </tbody>
 </table>
-
+<%= submit_tag "Edit Checked" if admin_signed_in? %>
+<% end %>
 <br>
 
 <%= link_to 'New Stamp', new_stamp_path if admin_signed_in? %>

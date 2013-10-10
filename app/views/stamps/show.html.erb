@@ -3,7 +3,6 @@
 <%= link_to 'Edit', edit_stamp_path(@stamp) if admin_signed_in? %> 
 <%= link_to 'Back', stamps_path if admin_signed_in? %>
 <%= link_to 'New Stamp', new_stamp_path if admin_signed_in? %>
-<%= link_to 'Duplicate Stamp', new_stamp_path if admin_signed_in? %>
 
 <p>
   <h2><u><%= @stamp.Title %></u></h2>
@@ -47,10 +46,10 @@
 <br>
 
 <!-- delete the 'sandbox' from this url in production-->
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 
 <!-- Identify your business so that you can collect the payments. -->
-<input type="hidden" name="business" value="frank.garmon.05@cnu.edu">
+<input type="hidden" name="business" value="jap4xv@virginia.edu">
 <input type="hidden" name="cmd" value="_xclick">
 <input type="hidden" name="item_name" value="<%= @stamp.Title %>">
 <input type="hidden" name="amount" value="<%= @stamp.Price %>">
@@ -67,9 +66,9 @@ src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
 </form>
 
 <br>
-<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" >
+<form target="paypal" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" >
 <input type="hidden" name="cmd" value="_cart">
-<input type="hidden" name="business" value="frank.garmon.05@cnu.edu">
+<input type="hidden" name="business" value="jap4xv@virginia.edu">
 <input type="hidden" name="lc" value="US">
 <input type="hidden" name="item_name" value="<%= @stamp.Title %>">
 <input type="hidden" name="amount" value="<%= @stamp.Price %>">
@@ -88,3 +87,4 @@ src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
 <%= link_to 'Edit', edit_stamp_path(@stamp) if admin_signed_in? %> |
 <%= link_to 'Back', stamps_path %> |
 <%= link_to 'New Stamp', new_stamp_path if admin_signed_in? %>
+

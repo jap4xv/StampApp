@@ -1,0 +1,16 @@
+<%= form_for :stamp, :url => update_multiple_stamps_path, :html => { :method => :put } do |f| %>
+  <ul>
+    <% for stamp in @stamps %>
+      <li>
+        <%= hidden_field_tag "stamp_ids[]", stamp.id %>
+        <%=h stamp.Title %>
+      </li>
+    <% end %>
+  </ul>
+  <p>
+    <%= f.label :Price %><br />
+    <%= f.text_field :Price %>
+  </p>
+  
+  <p><%= f.submit "Submit" %></p>
+<% end %>
