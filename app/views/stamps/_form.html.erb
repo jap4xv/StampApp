@@ -7,7 +7,9 @@
     <%= f.input :Price %>
   </div>
   
+  <!--
   <%= f.association :categories,  as: :check_boxes %>	
+  -->
 	
   <div class="field">
     <%= f.label :tag_list, "Tags (separated by commas)" %>
@@ -28,15 +30,6 @@
   <div>
     <%= f.input :notes %>
   </div>
-
-<!-- CATEGORIES CHECKBOXES
-  <% for category in Category.find(:all) %>
-<div>
-  <%= check_box_tag "category", category.id %>
-  <%= category.name %>
-</div>
-<% end %>
--->
 
   <div class="form-actions">
     <%= f.button :submit %>
