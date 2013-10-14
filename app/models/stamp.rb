@@ -15,10 +15,18 @@ class Stamp < ActiveRecord::Base
 	has_attached_file :image5, :styles => { :large => "600x600>", :medium => "300x300>", :thumb => "128x128>" }, :default_url => "/images/:style/missing.png"
 
   def self.search(search)
-    if search
-      find(:all, :conditions => ["\"Title\" LIKE ?", "%#{search}%"] )
+    if Rails.env.development?
+      if search
+        find(:all, :conditions => ["\"Title\" LIKE ?", "%#{search}%"] )
+      else
+        find(:all)
+      end
     else
-      find(:all)
+      if search
+        find(:all, :conditions => ["\"Title\" ilike ?", "%#{search}%"] )
+      else
+        find(:all)
+      end
     end
   end
 
