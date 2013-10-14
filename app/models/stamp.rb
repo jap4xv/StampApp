@@ -16,7 +16,7 @@ class Stamp < ActiveRecord::Base
 
   def self.search(search)
     if search
-      find(:all, :conditions => ['Title LIKE ?', "%#{search}%"] )
+      find(:all, :conditions => ["\"Title\" LIKE ?", "%#{search}%"] )
     else
       find(:all)
     end
