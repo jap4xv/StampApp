@@ -24,7 +24,7 @@ class Stamp < ActiveRecord::Base
       end
     else
       if search
-        Stamp.where("\"Title\" @@ :s or \"Description\" @@ :s" , s: search ).all
+        search(search)
       else
         Stamp.all
       end
