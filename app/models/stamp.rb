@@ -6,20 +6,21 @@ class Stamp < ActiveRecord::Base
   has_many :categories, through: :categorizations
 	accepts_nested_attributes_for :assets, :allow_destroy => true
 	
-  searchable do
-    text :Title, :Description
-    text :tag_list
-    
-    #string  :sort_title do
-    #  title.downcase.gsub(/^(an?|the)/, '')
-    #end
-  end
+
   
 	has_attached_file :image, :styles => {  :large => "600x600>", :medium => "300x300>", :thumb => "128x128>" }, :default_url => "/images/:style/missing.png"
 	has_attached_file :image2, :styles => { :large => "600x600>", :medium => "300x300>", :thumb => "128x128>" }, :default_url => "/images/:style/missing.png"
 	has_attached_file :image3, :styles => { :large => "600x600>", :medium => "300x300>", :thumb => "128x128>" }, :default_url => "/images/:style/missing.png"
 	has_attached_file :image4, :styles => { :large => "600x600>", :medium => "300x300>", :thumb => "128x128>" }, :default_url => "/images/:style/missing.png"
 	has_attached_file :image5, :styles => { :large => "600x600>", :medium => "300x300>", :thumb => "128x128>" }, :default_url => "/images/:style/missing.png"
+
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['Title LIKE ?', "%#{search}%"] )
+    else
+      find(:all)
+    end
+  end
 
 	#validates_attachment_presence :image
 	#validates_attachment_size :image, :less_than => 5.megabytes

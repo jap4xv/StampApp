@@ -8,10 +8,10 @@
   <% end %>
 </div>
 
-<%= form_tag stamps_path, :method => :get do %>
+<%= form_tag stamps_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :title => nil %>
+    <%= submit_tag "Search", :name => nil %>
   </p>
 <% end %>
 
@@ -20,6 +20,9 @@
 <table>
   <thead>
     <tr>
+      <% if admin_signed_in? %>
+      	<%= raw '<th></th>' %>
+      <% end %>
       <th>Title</th>
       <th>Picture</th>
       <th>Price</th>
@@ -32,7 +35,9 @@
   <tbody>
     <% @stamps.reverse_each do |stamp| %>
       <tr>
-      	<td><%= check_box_tag "stamp_ids[]", stamp.id if admin_signed_in? %></td>
+      	<% if admin_signed_in? %>
+      		<td><%= check_box_tag "stamp_ids[]", stamp.id %></td>
+      	<% end %>
         <td><strong><h4><%= link_to stamp.Title, stamp %></h4></strong></td>
         <td><%= image_tag stamp.image.url :thumb %></td>
         <td><h4><%= number_to_currency(stamp.Price) %></h4></td>

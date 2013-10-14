@@ -9,11 +9,7 @@ class StampsController < ApplicationController
     if params[:tag]
       @stamps = Stamp.tagged_with(params[:tag])
     else
-    @search = Stamp.search do
-      fulltext params[:search]
-    end
-    @stamps = @search.results
-
+      @stamps = Stamp.search(params[:search])
     end
   end
 
