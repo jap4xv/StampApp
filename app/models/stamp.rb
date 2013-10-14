@@ -17,15 +17,16 @@ class Stamp < ActiveRecord::Base
   def self.search(search)
     if Rails.env.development?
       if search
-        find(:all, :conditions => ["\"Title\" LIKE ?", "%#{search}%"] )
+        #find(:all, :conditions => ["\"Title\" LIKE ?", "%#{search}%"] )
+        Stamp.where(["\"Title\" LIKE ?" , "%#{search}%"] ).all
       else
-        find(:all)
+        Stamp.all
       end
     else
       if search
-        find(:all, :conditions => ["\"Title\" ilike ?", "%#{search}%"] )
+        Stamp.where("\"Title\" @@ :s or \"Description\" @@ :s" , s: search ).all
       else
-        find(:all)
+        Stamp.all
       end
     end
   end
