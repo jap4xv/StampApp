@@ -1,13 +1,4 @@
-<br>
-<h1>Stamps for Sale</h1>
-<br/>
-<h4>View by Category</h4>
-<div id="tag_cloud">
-  <% tag_cloud Stamp.tag_counts, %w[s m l] do |tag, css_class| %>
-    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-  <% end %>
-</div>
-<br>
+<h3>Search All Stamps</h3>
 
 <div id="search">
 <%= form_tag stamps_path, :method => 'get' do %>
@@ -61,12 +52,7 @@
 <br><br>
 <hr>
 
-<h4>View by Category</h4>
-<div id="tag_cloud">
-  <% tag_cloud Stamp.tag_counts, %w[s m l] do |tag, css_class| %>
-    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-  <% end %>
-</div>
+
 
 
 
