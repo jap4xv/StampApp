@@ -25,7 +25,7 @@
       <th></th>
     </tr>
   </thead>
-
+  <div class="apple_pagination"><%= will_paginate @posts %></div>
   <tbody>
     <% @stamps.reverse_each do |stamp| %>
       <tr>
@@ -43,6 +43,7 @@
     <% end %>
   </tbody>
 </table>
+<div class="apple_pagination"><%= will_paginate @posts %></div>
 <%= submit_tag "Edit Checked" if admin_signed_in? %>
 <% end %>
 <br>

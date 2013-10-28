@@ -7,9 +7,9 @@ class StampsController < ApplicationController
   # GET /stamps.json
   def index
     if params[:tag]
-      @stamps = Stamp.tagged_with(params[:tag])
+      @stamps = Stamp.tagged_with(params[:tag]).paginate(:page => params[:page])
     else
-      @stamps = Stamp.search(params[:search])
+      @stamps = Stamp.search(params[:search]).paginate(:page => params[:page])
     end
   end
 
