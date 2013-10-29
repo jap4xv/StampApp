@@ -30,8 +30,10 @@
             	<h3>View by Category</h3>
             	<div id="tag_cloud">
             		<ul class="categories">
+            		 <% @count = 0 %>
 				 	 <% tag_cloud Stamp.tag_counts, %w[s m l] do |tag, css_class| %>
-				    	<li><%= link_to tag.name, tag_path(tag.name), class: css_class %></li>
+				    	<li><%= link_to tag.name + ' (' + Stamp.tag_counts[@count].count.to_s + ')', tag_path(tag.name), class: css_class %></li>
+				    	<% @count = @count + 1%>
 				  	 <% end %>
 				  	 </ul>
 				</div>
